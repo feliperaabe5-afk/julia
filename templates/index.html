@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Julia Monteiro | Psicóloga Clínica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-row">
+    <span class="brand">Julia Monteiro</span>
+    <nav class="nav">
+      <a href="#sobre">Sobre</a>
+      <a href="#para-quem">Para quem é</a>
+      <a href="#atendimento">Atendimento</a>
+      <a href="#contato">Contato</a>
+    </nav>
+    <a class="btn btn-ghost nav-cta" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Agendar conversa</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Psicoterapia online &middot; {{ crp }}</p>
+        <h1>Um espaço para você se <em>reencontrar</em>, dentro do seu <em>próprio</em> sistema.</h1>
+        <p class="lede">
+          Atendimento psicológico online para mulheres, com abordagem sistêmica
+          familiar. Um cuidado que olha para você e para as relações que te formaram.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Marcar primeira sessão</a>
+          <a class="btn btn-text" href="#sobre">Conhecer a Julia &rarr;</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+         <img src="{{ url_for('static', filename='img/logo.png') }}" height="500" width="500"
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre" class="section">
+    <div class="wrap about-grid">
+      <p class="eyebrow">Sobre</p>
+      <div class="about-photo">
+        <img src="{{ url_for('static', filename='img/julia-sobre.jpg') }}" alt="Foto de Julia Monteiro">
+      </div>
+      <div class="about-text">
+        <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
+        <p>
+          Sou Julia Monteiro, psicóloga (<strong>{{ crp }}</strong>) e
+          pós-graduanda em Terapia Familiar Sistêmica. Acredito que nossos
+          conflitos, padrões e formas de amar raramente nascem sozinhos —
+          eles se constroem em família, em vínculo, em história.
+        </p>
+        <p>
+          No consultório online, trago essa lente sistêmica para escutar não
+          só o que você sente hoje, mas como os laços que a atravessam
+          moldaram esse sentir — para que você possa escolher, com mais
+          clareza, o que quer manter e o que quer transformar.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PARA QUEM -->
+  <section id="para-quem" class="section section-tint">
+    <div class="wrap">
+      <p class="eyebrow">Para quem é</p>
+      <h2>Um cuidado pensado para mulheres</h2>
+      <div class="cards">
+        <div class="card">
+          <h3>Relações e vínculos</h3>
+          <p>Padrões repetidos em relacionamentos, conflitos familiares e dificuldade de colocar limites.</p>
+        </div>
+        <div class="card">
+          <h3>Transições de vida</h3>
+          <p>Maternidade, mudanças de carreira, luto, término de ciclos e novos começos.</p>
+        </div>
+        <div class="card">
+          <h3>Autoconhecimento</h3>
+          <p>Entender sua história para viver o presente com mais autonomia emocional.</p>
+        </div>
+        <div class="card">
+          <h3>Ansiedade e sobrecarga</h3>
+          <p>Cuidado com a saúde mental de quem carrega múltiplos papéis no dia a dia.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ATENDIMENTO -->
+  <section id="atendimento" class="section">
+    <div class="wrap atend-grid">
+      <div>
+        <p class="eyebrow">Como funciona</p>
+        <h2>Atendimento 100% online</h2>
+        <p>
+          As sessões acontecem por vídeochamada, em um horário combinado
+          semanalmente — de onde for mais confortável para você.
+        </p>
+      </div>
+      <ul class="steps">
+        <li><span class="step-n">Passo 1</span> Envie uma mensagem contando um pouco do que te trouxe até aqui.</li>
+        <li><span class="step-n">Passo 2</span> Agendamos uma primeira sessão para nos conhecermos.</li>
+        <li><span class="step-n">Passo 3</span> Definimos juntas a frequência e o formato do acompanhamento.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" class="section section-dark">
+    <div class="wrap contact-grid">
+      <div>
+        <p class="eyebrow eyebrow-inverse">Contato</p>
+        <h2>Vamos conversar?</h2>
+        <p class="contact-lede">
+          Me chame no WhatsApp para tirar dúvidas ou agendar sua primeira sessão.
+        </p>
+      </div>
+      <div class="contact-actions">
+        <a class="btn btn-primary btn-lg" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
+        <a class="btn btn-outline" href="{{ instagram_url }}" target="_blank" rel="noopener">@{{ instagram_handle }}</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>{{ nome }} &middot; {{ crp }}</span>
+    <span class="footer-note">Atendimento online para mulheres</span>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
