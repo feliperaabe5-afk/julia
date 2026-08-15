@@ -9,7 +9,7 @@ CONTEXT = {
     "instagram_handle": "psi_juliamonteiro",
     "instagram_url": "https://instagram.com/psi_juliamonteiro",
     "whatsapp_numero": "554184137113",
-    "whatsapp_mensagem": "Olá, Julia! Vim pelo Instagram e gostaria de saber mais sobre as sessões online.",
+    "whatsapp_mensagem": "Olá, Julia! Vim pelo site e gostaria de saber mais sobre as sessões online.",
 }
 
 CONTEXT["whatsapp_url"] = (
