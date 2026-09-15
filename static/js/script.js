@@ -18,6 +18,18 @@ if (navToggle && mainNav) {
   });
 }
 
+// Evento de conversão do Google Ads (Contato) — disparado sempre que
+// alguém clica em um botão que leva ao WhatsApp
+document.querySelectorAll(".js-whatsapp-cta").forEach((link) => {
+  link.addEventListener("click", () => {
+    if (typeof gtag === "function") {
+      gtag("event", "conversion", {
+        send_to: "AW-18383511999/jHp7CKaLvPYcEL_D-L1E",
+      });
+    }
+  });
+});
+
 // Destaca o link do menu correspondente à seção visível na tela
 const sections = document.querySelectorAll("main section[id]");
 const navLinks = document.querySelectorAll(".nav a");
