@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% include "partials/_seo_head.html" %}
+{% include "partials/_gtag.html" %}
+{% include "partials/_schema.html" %}
+</head>
+<body data-pagina="{{ pagina.id }}"
+      data-modo-consentimento="{{ modo_consentimento }}"
+      data-pagina-saude="{{ '1' if pagina.pagina_saude else '0' }}"
+      data-ads-id="{{ google_ads_id }}"
+      data-ads-label="{{ google_ads_label_whatsapp }}"
+      data-base-url="{{ site.base_url }}"
+      data-paginas-saude="{{ caminhos_saude | join(' ') }}">
+<a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+{% include "partials/_header.html" %}
+
+<main id="conteudo" tabindex="-1">
+{% block conteudo %}{% endblock %}
+</main>
+
+{% include "partials/_footer.html" %}
+{% include "partials/_whatsapp_flutuante.html" %}
+{% include "partials/_consentimento.html" %}
+
+<script src="{{ static_v('js/script.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+{#- Botão de WhatsApp. Importar com:
+    {% from "partials/_cta_whatsapp.html" import cta with context %}
+    origem: header | menu-mobile | hero | meio | contato | flutuante -#}
+{% macro cta(origem, texto='Agendar pelo WhatsApp', classes='btn btn-primary') -%}
+<a class="{{ classes }} js-whatsapp-cta" data-cta-origem="{{ origem }}" href="{{ whatsapp_url }}" target="_blank" rel="noopener">{{ texto }}</a>
+{%- endmacro %}

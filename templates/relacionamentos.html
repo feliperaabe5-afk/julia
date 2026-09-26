@@ -1,0 +1,36 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- Página de SAÚDE (modo básico do consentimento). Não oferecer formatos de
+    atendimento que não estão no site (casal, família em sessão etc.). -#}
+
+{% block hero_texto %}
+<p class="lede">
+  Padrões repetidos em relacionamentos, conflitos familiares e dificuldade
+  de colocar limites.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    <p class="eyebrow">Abordagem sistêmica familiar</p>
+    <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
+    <p>
+      Acredito que nossos conflitos, padrões e formas de amar raramente
+      nascem sozinhos — eles se constroem em família, em vínculo, em história.
+    </p>
+    <h2>Atendimento 100% online</h2>
+    <p>
+      As sessões acontecem por videochamada, em um horário combinado
+      semanalmente — de onde for mais confortável para você.
+    </p>
+    <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+    <div class="cta-meio">
+      {{ cta('meio', 'Agendar pelo WhatsApp') }}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

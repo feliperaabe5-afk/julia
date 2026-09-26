@@ -1,0 +1,36 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+
+{% block hero_texto %}
+<p class="lede">
+  Atendimento psicológico online para mulheres, com abordagem sistêmica
+  familiar. Um cuidado que olha para você e para as relações que te formaram.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap atend-grid">
+    <div>
+      <p class="eyebrow">Modalidade</p>
+      <h2>Atendimento 100% online</h2>
+      <p>
+        As sessões acontecem por videochamada, em um horário combinado
+        semanalmente — de onde for mais confortável para você.
+      </p>
+      <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+    </div>
+    <div>
+      <h2 class="h-menor">Temas do atendimento</h2>
+      <p>Um cuidado pensado para mulheres:</p>
+      {% include "partials/_temas_links.html" %}
+      <div class="cta-meio">
+        {{ cta('meio', 'Agendar pelo WhatsApp') }}
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

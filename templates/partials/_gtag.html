@@ -1,0 +1,22 @@
+{#- Google Ads (AW) com Consent Mode v2.
+    Só existe no domínio de produção (google_ads_id fica vazio em localhost,
+    previews e *.vercel.app).
+    - Padrão do consentimento "denied" SEMPRE antes de qualquer tag.
+    - Modo avançado (páginas sem tema de saúde): o gtag.js carrega já e, sem
+      aceite, o Google recebe só sinais sem cookie.
+    - Modo básico (páginas de saúde): o gtag.js NÃO está no HTML; o
+      static/js/script.js só o injeta depois do "Aceitar".
+    O gtag('config') fica no script.js (page_location genérico nas páginas
+    de saúde e allow_ad_personalization_signals:false em todas). -#}
+{% if google_ads_id %}
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('consent', 'default', {ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied', wait_for_update: 500});
+gtag('set', 'ads_data_redaction', true);
+try { if (window.localStorage.getItem('consentimento') === 'granted') { gtag('consent', 'update', {ad_storage: 'granted', ad_user_data: 'granted'}); } } catch (e) {}
+</script>
+{% if modo_consentimento == 'avancado' %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ google_ads_id }}"></script>
+{% endif %}
+{% endif %}

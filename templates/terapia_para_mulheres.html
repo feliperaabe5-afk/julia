@@ -1,0 +1,44 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+
+{% block hero_texto %}
+<p class="lede">
+  Atendimento psicológico online para mulheres, com abordagem sistêmica
+  familiar. Um cuidado que olha para você e para as relações que te formaram.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section section-tint">
+  <div class="wrap">
+    <p class="eyebrow">Para quem é</p>
+    <h2>Um cuidado pensado para mulheres</h2>
+    {% include "partials/_cards_temas.html" %}
+    <div class="cta-meio cta-meio--centro">
+      {{ cta('meio', 'Agendar pelo WhatsApp') }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap prose">
+    <p class="eyebrow">Sobre a Julia</p>
+    <h2>Quem atende</h2>
+    <p>
+      Sou Julia Monteiro, psicóloga (<strong>{{ site.crp }}</strong>) e
+      pós-graduanda em Terapia Familiar Sistêmica. As sessões acontecem por
+      videochamada, em um horário combinado semanalmente — de onde for mais
+      confortável para você.
+    </p>
+    <p class="links-seta">
+      <a href="/sobre">Conhecer a Julia &rarr;</a>
+      <a href="/como-funciona">Veja como funciona &rarr;</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
+
+{% block hero_link %}<a class="btn btn-text" href="/como-funciona">Veja como funciona &rarr;</a>{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

@@ -1,0 +1,61 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- Página de transparência e identificação (CEPP art. 20). Sem a palavra
+    que indica título de especialidade: a pós está em andamento. -#}
+
+{% block eyebrow %}Sobre &middot; {{ site.crp }}{% endblock %}
+
+{% block hero_texto %}
+<p class="lede">
+  Psicóloga e pós-graduanda em Terapia Familiar Sistêmica, com atendimento
+  psicológico online para mulheres.
+</p>
+{% endblock %}
+
+{% block hero_link %}<a class="btn btn-text" href="/como-funciona">Veja como funciona &rarr;</a>{% endblock %}
+
+{% block hero_aside %}
+<div class="foto-perfil">
+  <picture>
+    <source type="image/webp"
+            srcset="{{ static_v('img/perfil-600.webp') }} 600w, {{ static_v('img/perfil-900.webp') }} 900w"
+            sizes="(max-width: 860px) 280px, 360px">
+    <img src="{{ static_v('img/perfil-900.jpg') }}" width="900" height="1200"
+         alt="{{ site.nome_completo }}, psicóloga ({{ site.crp }})" fetchpriority="high" decoding="async">
+  </picture>
+</div>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    <p class="eyebrow">A abordagem</p>
+    <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
+    <p>
+      Sou Julia Monteiro, psicóloga (<strong>{{ site.crp }}</strong>) e
+      pós-graduanda em Terapia Familiar Sistêmica. Acredito que nossos
+      conflitos, padrões e formas de amar raramente nascem sozinhos —
+      eles se constroem em família, em vínculo, em história.
+    </p>
+    <p>
+      No consultório online, trago essa lente sistêmica para escutar não
+      só o que você sente hoje, mas como os laços que a atravessam
+      moldaram esse sentir — para que você possa escolher, com mais
+      clareza, o que quer manter e o que quer transformar.
+    </p>
+    {{ pendente("formação: graduação e instituição, instituição da pós em Terapia Familiar Sistêmica e previsão de conclusão. Só publicar com o texto confirmado pela Julia.") }}
+    {% if site.instagram_confirmado %}
+    <p class="links-seta"><a href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram: @{{ site.instagram_handle }} &rarr;</a></p>
+    {% else %}
+    {{ pendente("confirmar o @ do Instagram (o logo mostra psi.juliamonteiro e o link do site usa psi_juliamonteiro). Depois de confirmado, o link aparece aqui.") }}
+    {% endif %}
+    <p class="links-seta">
+      <a href="/terapia-sistemica">Abordagem sistêmica familiar &rarr;</a>
+      <a href="/terapia-para-mulheres">Para quem é &rarr;</a>
+    </p>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

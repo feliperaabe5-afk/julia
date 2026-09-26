@@ -1,0 +1,30 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- AINDA NÃO PUBLICADA (PAGES: publicada=False -> 404).
+    Publicar SÓ quando a Julia escrever o texto: colocar o texto dela no bloco
+    texto_proprio abaixo e mudar publicada=True (e texto_aprovado=True depois
+    da aprovação). Tom neutro, sem medo nem urgência. Sem luto gestacional ou
+    perinatal. Manter o aviso de emergência. -#}
+
+{% block hero_texto %}
+<p class="lede">
+  Maternidade, mudanças de carreira, luto, término de ciclos e novos começos.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    <h2>Atendimento 100% online</h2>
+    <p>
+      As sessões acontecem por videochamada, em um horário combinado
+      semanalmente — de onde for mais confortável para você.
+    </p>
+    <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+    {% include "partials/_aviso_emergencia.html" %}
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

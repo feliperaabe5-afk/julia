@@ -1,0 +1,48 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- Não chamar a Julia de "psicóloga sistêmica" nem dizer que o atendimento
+    é exclusivo de um formato. Nunca citar a prática de "constelação". -#}
+
+{% block hero_texto %}
+<p class="lede">
+  Atendimento psicológico online para mulheres, com abordagem sistêmica
+  familiar. Um cuidado que olha para você e para as relações que te formaram.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap about-grid about-grid--2">
+    <div class="about-photo">
+      <picture>
+        <source type="image/webp"
+                srcset="{{ static_v('img/julia-sobre-400.webp') }} 400w, {{ static_v('img/julia-sobre-800.webp') }} 800w"
+                sizes="(max-width: 900px) 280px, 375px">
+        <img src="{{ static_v('img/julia-sobre-800.jpg') }}" width="800" height="783"
+             alt="{{ site.nome_completo }}, psicóloga ({{ site.crp }})" loading="lazy" decoding="async">
+      </picture>
+    </div>
+    <div class="about-text">
+      <p class="eyebrow">A abordagem</p>
+      <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
+      <p>
+        Sou Julia Monteiro, psicóloga (<strong>{{ site.crp }}</strong>) e
+        pós-graduanda em Terapia Familiar Sistêmica. Acredito que nossos
+        conflitos, padrões e formas de amar raramente nascem sozinhos —
+        eles se constroem em família, em vínculo, em história.
+      </p>
+      <p>
+        No consultório online, trago essa lente sistêmica para escutar não
+        só o que você sente hoje, mas como os laços que a atravessam
+        moldaram esse sentir — para que você possa escolher, com mais
+        clareza, o que quer manter e o que quer transformar.
+      </p>
+      <blockquote class="citacao">Um espaço para você se reencontrar, dentro do seu próprio sistema.</blockquote>
+      <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

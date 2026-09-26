@@ -1,0 +1,41 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- Página de navegação (header, rodapé, 404). NÃO repete os 3 passos e não é
+    sitelink. -#}
+
+{% block eyebrow %}Contato{% endblock %}
+
+{% block hero_texto %}
+<p class="lede">
+  Me chame no WhatsApp para tirar dúvidas ou agendar sua primeira sessão.
+</p>
+{% endblock %}
+
+{% block hero_acoes %}
+<div class="hero-actions">
+  {{ cta('hero', 'Falar no WhatsApp', 'btn btn-primary btn-lg') }}
+</div>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    <h2>Antes de escrever</h2>
+    <p>
+      O atendimento é 100% online, por videochamada. Pelo WhatsApp você tira
+      dúvidas e combina a primeira sessão.
+    </p>
+    {{ pendente("orientação da Julia sobre a primeira mensagem (sugestão para ela avaliar: avisar que detalhes pessoais podem ficar para a primeira sessão, já que o WhatsApp não é o canal da sessão) e horário de resposta.") }}
+    {% include "partials/_aviso_emergencia.html" %}
+    {% if site.instagram_confirmado %}
+    <p class="links-seta"><a href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram: @{{ site.instagram_handle }} &rarr;</a></p>
+    {% endif %}
+    <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}
+
+{% block cta_final %}{% endblock %}

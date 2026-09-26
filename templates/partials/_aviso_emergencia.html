@@ -1,0 +1,9 @@
+{#- Aviso de emergência (Res. CFP 09/2024, art. 5). Texto PROPOSTO: só vai ao
+    ar com SITE["aviso_emergencia_aprovado"] = True. No preview local aparece
+    marcado como proposta, para a Julia avaliar. -#}
+{% if site.aviso_emergencia_aprovado or (is_local and not ocultar_rascunhos) %}
+<p class="aviso-emergencia{% if not site.aviso_emergencia_aprovado %} is-rascunho{% endif %}">
+  {% if not site.aviso_emergencia_aprovado %}<span class="rascunho-tag">Proposta, aguardando aprovação:</span> {% endif %}
+  Este atendimento não é serviço de emergência. Em situação de crise, ligue 188 (CVV) ou 192 (SAMU).
+</p>
+{% endif %}
