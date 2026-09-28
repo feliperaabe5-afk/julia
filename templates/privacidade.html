@@ -1,0 +1,109 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- RASCUNHO até a Julia aprovar. Descreve o que o código faz de verdade.
+    A frase sobre remarketing só aparece com
+    SITE["remarketing_desligado_confirmado"] = True. -#}
+
+{% block eyebrow %}LGPD{% endblock %}
+
+{% block hero_texto %}
+<p class="lede">
+  Como este site trata dados pessoais: contato pelo WhatsApp, cookies e
+  medição de anúncios do Google.
+</p>
+{% endblock %}
+
+{% block hero_acoes %}{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    {{ pendente("texto inteiro aguardando aprovação da Julia; nome completo de quem controla os dados e canal para pedidos sobre dados pessoais.") }}
+
+    <h2>Quem é responsável</h2>
+    <p>
+      Este site é da Psicóloga {{ site.nome_completo }} ({{ site.crp }}), que
+      atende online.
+    </p>
+
+    <h2>Contato e formulários</h2>
+    <p>
+      Este site não tem formulário nem banco de dados. Os botões de contato
+      abrem uma conversa no WhatsApp; a partir daí, a conversa segue as regras
+      de privacidade do próprio WhatsApp.
+    </p>
+
+    <h2>Cookies e medição de anúncios</h2>
+    <p>
+      O site usa a tag do Google Ads para medir quantas pessoas clicam nos
+      botões de contato depois de ver um anúncio. Os cookies do Google Ads só
+      são usados se você clicar em “Aceitar” no aviso de cookies. Sem essa
+      escolha, o padrão é “recusado” (Modo de Consentimento v2 do Google).
+    </p>
+    <ul>
+      <li>
+        Nas páginas de temas de saúde (ansiedade e sobrecarga, relações e
+        vínculos, transições de vida e suas subpáginas, e autoconhecimento),
+        nada é enviado ao Google antes do aceite. Mesmo depois do aceite, o
+        Google recebe só um endereço genérico (“/tema”), nunca o tema que você
+        visitou.
+      </li>
+      <li>
+        Nas demais páginas, sem aceite, o Google recebe apenas um sinal sem
+        cookie, com o endereço da página visitada.
+      </li>
+      <li>
+        Com o aceite, o Google recebe o clique no botão de contato junto com o
+        identificador do cookie.
+      </li>
+      <li>
+        A tag só funciona no endereço oficial do site e está configurada com a
+        personalização de anúncios desligada
+        (<code>allow_ad_personalization_signals=false</code>).
+      </li>
+      {% if site.remarketing_desligado_confirmado %}
+      <li>
+        O site não usa remarketing: a sua visita não é usada para mostrar
+        anúncios personalizados para você depois.
+      </li>
+      {% endif %}
+    </ul>
+
+    <h2>Como mudar a sua escolha</h2>
+    <p>
+      Você pode mudar a sua escolha a qualquer momento pelo link
+      “Preferências de cookies”, no rodapé de todas as páginas.
+    </p>
+    {% if site.google_ads_id and site.aviso_cookies_ativo %}
+    <p><button type="button" class="btn btn-ghost btn-sm js-preferencias-cookies">Preferências de cookies</button></p>
+    {% endif %}
+
+    <h2>Outros serviços usados pelo site</h2>
+    <p>
+      As fontes do texto vêm do Google Fonts, e o site é hospedado na Vercel.
+      Esses serviços recebem dados técnicos da conexão, como o endereço IP,
+      para entregar as páginas. Ao Google Fonts e ao WhatsApp, o site pede ao
+      navegador que informe só o endereço principal do site, sem o caminho da
+      página visitada.
+    </p>
+    <p>
+      Os dados de navegação podem ser processados fora do Brasil (Google e
+      Vercel, nos EUA).
+    </p>
+
+    <h2>Seus direitos</h2>
+    <p>
+      Pela Lei Geral de Proteção de Dados (LGPD, art. 18), você pode pedir a
+      confirmação de que há tratamento de dados, o acesso, a correção, a
+      anonimização, o bloqueio ou a eliminação de dados, informações sobre o
+      compartilhamento e a revogação do consentimento.
+    </p>
+    <p class="nota-pequena">Última atualização: {{ site.ultima_atualizacao[8:10] }}/{{ site.ultima_atualizacao[5:7] }}/{{ site.ultima_atualizacao[:4] }}.</p>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}
+
+{% block cta_final %}{% endblock %}

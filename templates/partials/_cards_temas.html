@@ -1,0 +1,13 @@
+{#- Cards da seção "Para quem é" (texto exato do site), com link para a
+    página de cada tema. -#}
+<div class="cards">
+  {% for t in temas_cards %}
+  <div class="card">
+    <h3>{{ t.titulo }}</h3>
+    <p>{{ t.texto }}</p>
+    {% if t.href != pagina.slug %}
+    <a class="card-link" href="{{ t.href }}">Saiba mais<span class="sr-only"> sobre {{ t.titulo | lower }}</span> &rarr;</a>
+    {% endif %}
+  </div>
+  {% endfor %}
+</div>

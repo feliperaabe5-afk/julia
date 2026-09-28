@@ -1,0 +1,9 @@
+{#- Nota de pendência: aparece SÓ no preview local (localhost), nunca no
+    domínio de produção. Para ver as páginas como ficarão no ar, rode com
+    OCULTAR_RASCUNHOS=1. Importar com:
+    {% from "partials/_pendente.html" import pendente with context %} -#}
+{% macro pendente(texto) -%}
+{% if is_local and not ocultar_rascunhos %}
+<aside class="nota-rascunho" role="note"><strong>Pendente</strong> <span>(só aparece no preview local)</span>: {{ texto }}</aside>
+{% endif %}
+{%- endmacro %}

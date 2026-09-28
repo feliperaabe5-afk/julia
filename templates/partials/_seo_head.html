@@ -1,0 +1,24 @@
+<title>{{ page_title }}</title>
+<meta name="description" content="{{ page_meta }}">
+<meta name="robots" content="{{ robots_meta }}">
+{% if canonical %}<link rel="canonical" href="{{ canonical }}">{% endif %}
+<meta name="theme-color" content="#FAF7F4">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="{{ static_v('img/favicon-32.png') }}" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="{{ static_v('img/apple-touch-icon.png') }}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:site_name" content="{{ site.nome_completo }}, psicóloga">
+<meta property="og:title" content="{{ page_title }}">
+<meta property="og:description" content="{{ page_meta }}">
+{% if canonical %}<meta property="og:url" content="{{ canonical }}">{% endif %}
+<meta property="og:image" content="{{ site.base_url }}{{ static_v('img/og-image.jpg') }}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Símbolo Ψ da Psicologia e o nome {{ site.nome_completo }}">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+{% if google_ads_id and modo_consentimento == 'avancado' %}<link rel="preconnect" href="https://www.googletagmanager.com">{% endif %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,500;1,400;1,500&family=Inter:wght@400;600&display=swap">
+<link rel="stylesheet" href="{{ static_v('css/style.css') }}">

@@ -1,60 +1,28 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Julia Monteiro | Psicóloga Clínica</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% extends "base.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-18383511999"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'AW-18383511999');
-</script>
-</head>
-<body>
-
-<header class="site-header">
-  <div class="wrap header-row">
-    <span class="brand">Julia Monteiro</span>
-    <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
-      <span></span><span></span><span></span>
-    </button>
-    <nav class="nav" id="mainNav">
-      <a href="#sobre">Sobre</a>
-      <a href="#para-quem">Para quem é</a>
-      <a href="#atendimento">Atendimento</a>
-      <a href="#contato">Contato</a>
-      <a class="btn btn-primary nav-mobile-cta js-whatsapp-cta" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Agendar conversa</a>
-    </nav>
-    <a class="btn btn-ghost nav-cta js-whatsapp-cta" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Agendar conversa</a>
-  </div>
-</header>
-
-<main>
+{% block conteudo %}
 
   <!-- HERO -->
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow">Psicoterapia online &middot; {{ crp }}</p>
-        <h1>Um espaço para você se <em>reencontrar</em>, dentro do seu próprio sistema.</h1>
+        <p class="eyebrow">Psicoterapia online &middot; {{ site.crp }}</p>
+        <h1>Psicoterapia online <em>para mulheres</em>, com abordagem sistêmica familiar</h1>
+        <p class="hero-sub">Um espaço para você se reencontrar, dentro do seu próprio sistema.</p>
         <p class="lede">
-          Atendimento psicológico online para mulheres, com abordagem sistêmica
-          familiar. Um cuidado que olha para você e para as relações que te formaram.
+          Um cuidado que olha para você e para as relações que te formaram.
         </p>
         <div class="hero-actions">
-          <a class="btn btn-primary js-whatsapp-cta" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Marcar primeira sessão</a>
+          {{ cta('hero', 'Marcar primeira sessão') }}
           <a class="btn btn-text" href="#sobre">Conhecer a Julia &rarr;</a>
         </div>
+        {% include "partials/_identificacao.html" %}
+        {{ pendente("aprovação da Julia para o novo título (H1). A frase antiga virou o subtítulo.") }}
       </div>
       <div class="hero-art" aria-hidden="true">
-        <svg viewBox="0 0 420 420" class="constellation constellation-standalone">
+        <svg viewBox="0 0 420 420" class="rede-sistemica rede-sistemica-standalone" focusable="false">
           <defs>
             <clipPath id="logoClip">
               <circle cx="210" cy="180" r="40"/>
@@ -70,7 +38,7 @@
           <circle cx="150" cy="300" r="24" class="c-node c-node-soft"/>
           <circle cx="300" cy="290" r="32" class="c-node c-node-soft"/>
           <circle cx="210" cy="180" r="41" class="c-node c-node-main"/>
-          <image href="{{ url_for('static', filename='img/logo.png') }}"
+          <image href="{{ static_v('img/logo-160.png') }}"
                  x="170" y="140" width="80" height="80"
                  clip-path="url(#logoClip)" preserveAspectRatio="xMidYMid slice"/>
         </svg>
@@ -83,12 +51,18 @@
     <div class="wrap about-grid">
       <p class="eyebrow">Sobre</p>
       <div class="about-photo">
-        <img src="{{ url_for('static', filename='img/julia-sobre.jpg') }}" alt="Foto de Julia Monteiro">
+        <picture>
+          <source type="image/webp"
+                  srcset="{{ static_v('img/julia-sobre-400.webp') }} 400w, {{ static_v('img/julia-sobre-800.webp') }} 800w"
+                  sizes="(max-width: 900px) 280px, 375px">
+          <img src="{{ static_v('img/julia-sobre-800.jpg') }}" width="800" height="783"
+               alt="{{ site.nome_completo }}, psicóloga ({{ site.crp }})" loading="lazy" decoding="async">
+        </picture>
       </div>
       <div class="about-text">
         <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
         <p>
-          Sou Julia Monteiro, psicóloga (<strong>{{ crp }}</strong>) e
+          Sou Julia Monteiro, psicóloga (<strong>{{ site.crp }}</strong>) e
           pós-graduanda em Terapia Familiar Sistêmica. Acredito que nossos
           conflitos, padrões e formas de amar raramente nascem sozinhos —
           eles se constroem em família, em vínculo, em história.
@@ -99,6 +73,10 @@
           moldaram esse sentir — para que você possa escolher, com mais
           clareza, o que quer manter e o que quer transformar.
         </p>
+        <p class="links-seta">
+          <a href="/sobre">Mais sobre a Julia &rarr;</a>
+          <a href="/terapia-sistemica">Abordagem sistêmica familiar &rarr;</a>
+        </p>
       </div>
     </div>
   </section>
@@ -108,24 +86,10 @@
     <div class="wrap">
       <p class="eyebrow">Para quem é</p>
       <h2>Um cuidado pensado para mulheres</h2>
-      <div class="cards">
-        <div class="card">
-          <h3>Relações e vínculos</h3>
-          <p>Padrões repetidos em relacionamentos, conflitos familiares e dificuldade de colocar limites.</p>
-        </div>
-        <div class="card">
-          <h3>Transições de vida</h3>
-          <p>Maternidade, mudanças de carreira, luto, término de ciclos e novos começos.</p>
-        </div>
-        <div class="card">
-          <h3>Autoconhecimento</h3>
-          <p>Entender sua história para viver o presente com mais autonomia emocional.</p>
-        </div>
-        <div class="card">
-          <h3>Ansiedade e sobrecarga</h3>
-          <p>Cuidado com a saúde mental de quem carrega múltiplos papéis no dia a dia.</p>
-        </div>
-      </div>
+      {% include "partials/_cards_temas.html" %}
+      <p class="links-seta links-seta--centro">
+        <a href="/terapia-para-mulheres">Terapia online para mulheres &rarr;</a>
+      </p>
     </div>
   </section>
 
@@ -136,20 +100,25 @@
         <p class="eyebrow">Como funciona</p>
         <h2>Atendimento 100% online</h2>
         <p>
-          As sessões acontecem por vídeochamada, em um horário combinado
+          As sessões acontecem por videochamada, em um horário combinado
           semanalmente — de onde for mais confortável para você.
         </p>
+        <p class="links-seta">
+          <a href="/psicologa-online">Psicóloga online &rarr;</a>
+          <a href="/como-funciona">Dúvidas frequentes &rarr;</a>
+        </p>
       </div>
-      <ul class="steps">
-        <li><span class="step-n">Passo 1</span> Envie uma mensagem contando um pouco do que te trouxe até aqui.</li>
-        <li><span class="step-n">Passo 2</span> Agendamos uma primeira sessão para nos conhecermos.</li>
-        <li><span class="step-n">Passo 3</span> Definimos juntas a frequência e o formato do acompanhamento.</li>
-      </ul>
+      <div>
+        {% include "partials/_passos.html" %}
+        <div class="cta-meio">
+          {{ cta('meio', 'Enviar mensagem no WhatsApp') }}
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- CONTATO -->
-  <section id="contato" class="section section-dark">
+  <section id="contato" class="section section-dark js-cta-final">
     <div class="wrap contact-grid">
       <div>
         <p class="eyebrow eyebrow-inverse">Contato</p>
@@ -159,21 +128,10 @@
         </p>
       </div>
       <div class="contact-actions">
-        <a class="btn btn-primary btn-lg js-whatsapp-cta" href="{{ whatsapp_url }}" target="_blank" rel="noopener">Falar no WhatsApp</a>
-        <a class="btn btn-outline" href="{{ instagram_url }}" target="_blank" rel="noopener">@{{ instagram_handle }}</a>
+        {{ cta('contato', 'Falar no WhatsApp', 'btn btn-primary btn-lg') }}
+        <a class="btn btn-outline" href="{{ site.instagram_url }}" target="_blank" rel="noopener">@{{ site.instagram_handle }}</a>
       </div>
     </div>
   </section>
 
-</main>
-
-<footer class="site-footer">
-  <div class="wrap footer-row">
-    <span>{{ nome }} &middot; {{ crp }}</span>
-    <span class="footer-note">Atendimento online para mulheres</span>
-  </div>
-</footer>
-
-<script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+{% endblock %}

@@ -1,0 +1,6 @@
+{#- Lista compacta de links para os temas do site (títulos dos cards). -#}
+<ul class="temas-links">
+  {% for t in temas_cards %}
+  <li><a href="{{ t.href }}"{% if t.href == pagina.slug %} aria-current="page"{% endif %}>{{ t.titulo }}</a></li>
+  {% endfor %}
+</ul>

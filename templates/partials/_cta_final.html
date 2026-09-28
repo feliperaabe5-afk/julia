@@ -1,0 +1,18 @@
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+<section class="section section-dark js-cta-final" aria-labelledby="cta-final-titulo">
+  <div class="wrap contact-grid">
+    <div>
+      <p class="eyebrow eyebrow-inverse">Contato</p>
+      <h2 id="cta-final-titulo">Vamos conversar?</h2>
+      <p class="contact-lede">
+        Me chame no WhatsApp para tirar dúvidas ou agendar sua primeira sessão.
+      </p>
+    </div>
+    <div class="contact-actions">
+      {{ cta('contato', 'Falar no WhatsApp', 'btn btn-primary btn-lg') }}
+      {% if site.instagram_confirmado %}
+      <a class="btn btn-outline" href="{{ site.instagram_url }}" target="_blank" rel="noopener">@{{ site.instagram_handle }}</a>
+      {% endif %}
+    </div>
+  </div>
+</section>

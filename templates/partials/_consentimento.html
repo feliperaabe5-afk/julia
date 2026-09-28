@@ -1,0 +1,13 @@
+{#- Aviso de cookies (Consent Mode v2). Começa escondido; o script.js mostra
+    quando não há escolha salva. Texto PENDENTE de aprovação da Julia. -#}
+{% if site.google_ads_id and site.aviso_cookies_ativo %}
+<div class="aviso-cookies" id="avisoCookies" role="region" aria-label="Aviso de cookies" hidden>
+  <div class="wrap aviso-cookies-row">
+    <p>Este site usa cookies do Google Ads para medir cliques nos botões de contato. <a href="/privacidade">Política de privacidade</a></p>
+    <div class="aviso-cookies-acoes">
+      <button type="button" class="btn btn-primary btn-sm" data-consentimento="granted">Aceitar</button>
+      <button type="button" class="btn btn-ghost btn-sm" data-consentimento="denied">Recusar</button>
+    </div>
+  </div>
+</div>
+{% endif %}

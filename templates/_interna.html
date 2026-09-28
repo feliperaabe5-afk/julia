@@ -1,0 +1,58 @@
+{#- Layout das páginas internas (temas e institucionais).
+    Blocos: hero_texto, hero_acoes, hero_aside, corpo, texto_proprio, cta_final.
+    texto_proprio: texto ESCRITO/APROVADO pela Julia. Fica vazio até lá e,
+    vazio, a seção inteira não é renderizada (nada de título solto). -#}
+{% extends "base.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+
+{% block conteudo %}
+<section class="page-hero{% if self.hero_aside() | trim %} page-hero--com-aside{% endif %}">
+  <div class="wrap">
+    <nav class="breadcrumb" aria-label="Você está em">
+      <ol>
+        <li><a href="/">Início</a></li>
+        {% if pai %}<li><a href="{{ pai.slug }}">{{ pai.breadcrumb }}</a></li>{% endif %}
+        <li><span aria-current="page">{{ pagina.breadcrumb }}</span></li>
+      </ol>
+    </nav>
+    <div class="page-hero-grid">
+      <div class="page-hero-copy">
+        <p class="eyebrow">{% block eyebrow %}Psicoterapia online &middot; {{ site.crp }}{% endblock %}</p>
+        <h1>{{ page_h1 }}</h1>
+        {% block hero_texto %}{% endblock %}
+        {% block hero_acoes %}
+        <div class="hero-actions">
+          {{ cta('hero', 'Marcar primeira sessão') }}
+          {% block hero_link %}<a class="btn btn-text" href="/sobre">Conhecer a Julia &rarr;</a>{% endblock %}
+        </div>
+        {% endblock %}
+        {% include "partials/_identificacao.html" %}
+      </div>
+      {% if self.hero_aside() | trim %}
+      <div class="page-hero-aside">
+        {% block hero_aside %}{% endblock %}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% block corpo %}{% endblock %}
+
+{% if self.texto_proprio() | trim %}
+<section class="section">
+  <div class="wrap prose">
+    {% block texto_proprio %}{% endblock %}
+  </div>
+</section>
+{% elif not pagina.texto_aprovado and is_local and not ocultar_rascunhos %}
+<div class="wrap">
+  {{ pendente("texto próprio desta página, escrito ou aprovado pela Julia (sugestão: 250 palavras ou mais, exclusivas desta página). Até lá a página fica com noindex e fora do sitemap, e não deve ser usada como destino de anúncio.") }}
+</div>
+{% endif %}
+
+{% block cta_final %}
+{% include "partials/_cta_final.html" %}
+{% endblock %}
+{% endblock %}

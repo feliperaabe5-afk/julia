@@ -1,0 +1,26 @@
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+<header class="site-header">
+  <div class="wrap header-row">
+    <a class="brand" href="/"{% if pagina.id == 'home' %} aria-current="page"{% endif %}>Julia Monteiro</a>
+    <button class="nav-toggle" id="navToggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav" id="mainNav" aria-label="Menu principal">
+      {% for item in nav_itens %}
+      <a href="{{ item.href }}"{% if item.secao %} data-secao="{{ item.secao }}"{% endif %}{% if item.atual %} aria-current="page"{% endif %}>{{ item.label }}</a>
+      {% if loop.index == 2 and temas_aprovados %}
+      <details class="nav-temas">
+        <summary>Temas</summary>
+        <ul>
+          {% for t in temas_aprovados %}
+          <li><a href="{{ t.slug }}"{% if t.slug == pagina.slug %} aria-current="page"{% endif %}>{{ t.breadcrumb }}</a></li>
+          {% endfor %}
+        </ul>
+      </details>
+      {% endif %}
+      {% endfor %}
+      {{ cta('menu-mobile', 'Agendar conversa', 'btn btn-primary nav-mobile-cta') }}
+    </nav>
+    {{ cta('header', 'Agendar conversa', 'btn btn-ghost nav-cta') }}
+  </div>
+</header>

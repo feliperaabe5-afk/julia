@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+
+{% block conteudo %}
+<section class="page-hero">
+  <div class="wrap prose">
+    <p class="eyebrow">Erro 404</p>
+    <h1>{{ page_h1 }}</h1>
+    <p class="lede">O endereço que você procurou não existe ou mudou de lugar.</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="/">Ir para o início</a>
+      {{ cta('hero', 'Falar no WhatsApp', 'btn btn-ghost') }}
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap prose">
+    <h2>Talvez você procure</h2>
+    <p>Psicoterapia online para mulheres, com abordagem sistêmica familiar:</p>
+    {% include "partials/_temas_links.html" %}
+    <p class="links-seta">
+      <a href="/psicologa-online">Psicóloga online &rarr;</a>
+      <a href="/como-funciona">Como funciona &rarr;</a>
+      <a href="/contato">Contato &rarr;</a>
+    </p>
+    {% include "partials/_identificacao.html" %}
+  </div>
+</section>
+{% endblock %}

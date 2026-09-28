@@ -1,0 +1,38 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- Página de SAÚDE (modo básico do consentimento). Texto informativo, sem
+    prometer resultado e sem perguntas que supõem a condição da pessoa. -#}
+
+{% block hero_texto %}
+<p class="lede">
+  Cuidado com a saúde mental de quem carrega múltiplos papéis no dia a dia.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap prose">
+    <p class="eyebrow">Abordagem sistêmica familiar</p>
+    <h2>Terapia que enxerga a pessoa dentro da sua rede de relações</h2>
+    <p>
+      No consultório online, trago essa lente sistêmica para escutar não
+      só o que você sente hoje, mas como os laços que a atravessam
+      moldaram esse sentir — para que você possa escolher, com mais
+      clareza, o que quer manter e o que quer transformar.
+    </p>
+    <h2>Atendimento 100% online</h2>
+    <p>
+      As sessões acontecem por videochamada, em um horário combinado
+      semanalmente — de onde for mais confortável para você.
+    </p>
+    <p class="links-seta"><a href="/como-funciona">Veja como funciona &rarr;</a></p>
+    {% include "partials/_aviso_emergencia.html" %}
+    <div class="cta-meio">
+      {{ cta('meio', 'Agendar pelo WhatsApp') }}
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}

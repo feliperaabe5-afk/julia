@@ -1,0 +1,43 @@
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-id">
+      <a class="footer-brand" href="/">Julia Monteiro</a>
+      <p class="footer-note">Psicoterapia online para mulheres, com abordagem sistêmica familiar.</p>
+      {% include "partials/_aviso_emergencia.html" %}
+    </div>
+    <nav class="footer-col" aria-label="Atendimento">
+      <p class="footer-titulo">Atendimento</p>
+      <ul>
+        {% for slug in ['/psicologa-online', '/terapia-para-mulheres', '/terapia-sistemica'] %}
+        {% set p = paginas[slug] %}
+        <li><a href="{{ p.slug }}">{{ p.breadcrumb }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Temas">
+      <p class="footer-titulo">Temas</p>
+      <ul>
+        {% for t in temas_cards %}
+        <li><a href="{{ t.href }}">{{ t.titulo }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+    <nav class="footer-col" aria-label="Site">
+      <p class="footer-titulo">Site</p>
+      <ul>
+        <li><a href="/sobre">Sobre a Julia</a></li>
+        <li><a href="/como-funciona">Como funciona</a></li>
+        <li><a href="/contato">Contato</a></li>
+        <li><a href="/privacidade">Política de privacidade</a></li>
+        {% if site.google_ads_id and site.aviso_cookies_ativo %}
+        <li><button type="button" class="link-btn js-preferencias-cookies">Preferências de cookies</button></li>
+        {% endif %}
+        <li><a href="{{ site.instagram_url }}" target="_blank" rel="noopener">Instagram</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-row">
+    {% include "partials/_identificacao.html" %}
+    <span class="footer-note">Atendimento online para mulheres</span>
+  </div>
+</footer>

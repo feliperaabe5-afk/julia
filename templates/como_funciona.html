@@ -1,0 +1,49 @@
+{% extends "_interna.html" %}
+{% from "partials/_cta_whatsapp.html" import cta with context %}
+{% from "partials/_pendente.html" import pendente with context %}
+{#- ÚNICA página, além da home, com os 3 passos. FAQ só com o que já está no
+    site (lista FAQ_COMO_FUNCIONA em app.py). O FAQPage do schema só sai com
+    texto_aprovado=True. -#}
+
+{% block hero_texto %}
+<p class="lede">
+  As sessões acontecem por videochamada, em um horário combinado
+  semanalmente — de onde for mais confortável para você.
+</p>
+{% endblock %}
+
+{% block corpo %}
+<section class="section">
+  <div class="wrap atend-grid">
+    <div>
+      <p class="eyebrow">Passo a passo</p>
+      <h2>Atendimento 100% online</h2>
+      <p>Do primeiro contato ao acompanhamento, tudo acontece à distância.</p>
+    </div>
+    <div>
+      {% include "partials/_passos.html" %}
+      <div class="cta-meio">
+        {{ cta('meio', 'Enviar mensagem no WhatsApp') }}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-tint">
+  <div class="wrap prose">
+    <p class="eyebrow">Dúvidas frequentes</p>
+    <h2>Perguntas sobre o atendimento</h2>
+    <div class="faq">
+      {% for f in faq_como_funciona %}
+      <details>
+        <summary>{{ f.pergunta }}</summary>
+        <p>{{ f.resposta }}</p>
+      </details>
+      {% endfor %}
+    </div>
+    {{ pendente("duração da sessão, plataforma de vídeo, valores, recibo/reembolso, convênios e política de faltas: só entram no FAQ depois da resposta da Julia.") }}
+  </div>
+</section>
+{% endblock %}
+
+{% block texto_proprio %}{% endblock %}
